@@ -9,4 +9,5 @@ Pipenv must be installed:
 
 Install dependencies
 
+    pipenv shell
     pipenv install --ignore-pipfile
