@@ -45,7 +45,7 @@ class ReportDetailView(GenericAPIView):
         return Report.objects.filter(user=self.request.user)
 
 
-class PostView(GenericAPIView):
+class PostDetailView(GenericAPIView):
     '''View for creating or retrieving post'''
     serializer_class = PostSerializer
 
