@@ -22,15 +22,17 @@ class Report(models.Model):
         return f'{self.title}'
 
 
-# class Tag(models.Model):
-#     '''
-#     '''
-#     report = models.ForeignKey(Report, on_delete=models.CASCADE,
-#                                related_name='tags')
-#     name = models.CharField('tag name', max_length=70)
+class Tag(models.Model):
+    '''
+    If tags are created for the report
+    then at least one tag must be in the post
+    '''
+    report = models.ForeignKey(Report, on_delete=models.CASCADE,
+                               related_name='tags')
+    name = models.CharField('tag name', max_length=30)
 
-#     def __str__(self):
-#         return f'{self.name}'
+    def __str__(self):
+        return f'{self.name}'
 
 
 class Source(models.Model):

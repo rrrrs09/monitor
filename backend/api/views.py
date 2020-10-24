@@ -45,14 +45,16 @@ class ReportDetailView(GenericAPIView):
         return Report.objects.filter(user=self.request.user)
 
 
-class PostDetailView(GenericAPIView):
-    '''View for retrieving post'''
+class PostView(GenericAPIView):
+    '''View for creating or retrieving post'''
+    serializer_class = PostSerializer
+
     def get(self, request, pk):
         instance = get_object_or_404(Post, pk=pk)
         if instance.report.user != request.user:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
-        serializer = PostSerializer(instance)
+        serializer = self.get_serializer(instance)
         return Response(serializer.data)
 
 
